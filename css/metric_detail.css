@@ -1,0 +1,136 @@
+﻿body
+{
+	background-color:#dccdc;
+	min-width:960px;
+	margin:0;
+	padding:0;
+}
+
+.wrapper
+{
+	position:relative;
+	width:100%;
+}
+
+div.wrapper {
+	width : 960px ;
+	margin-left : auto ;
+	margin-right : auto ;
+	/*position : relative ;*/
+}
+
+#bodydiv
+{
+	background-color:white;
+	}
+
+.container	{
+	margin:auto;
+}
+
+.maintitle
+{
+    font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:18px;
+	text-align:center;
+}
+
+.subtitle
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	text-align:center;
+}
+
+.gaugetable
+{
+	text-align:left;
+	width:960px;
+	background-color:white;
+}
+
+.gaugetable ol li
+{
+	padding-left:10px;
+	padding-right:15px;
+}
+
+.gaugetable tr
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	text-align:left;
+	padding-left:5px;
+	padding-right:5px;
+	border-collapse:collapse;
+}
+
+.gaugetable td
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font:arial;
+	text-align:left;
+	font-size:11px;
+	padding-left:15px;
+	padding-right:15px;
+	width:160px;
+}
+
+.gaugetable div
+{
+    font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+}
+
+tr.spaceUnder  td
+{
+	padding-bottom: 1em;
+	
+}
+
+.gaugetable img
+{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+#gaugetitle
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:24px;
+	font-weight:bold;
+	margin-left:auto;
+	margin-right:auto;
+	width:90%;
+	padding-top:15px;
+	padding-bottom:0px;
+	text-align:center;
+}
+
+.gaugetitlesub
+{
+	font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	font-style:italic;
+	padding-bottom:20px;
+	text-align:center;
+}
+    .headerrow
+	{
+	font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	text-align:left;
+	}
+
+	.googlerows
+	{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	text-align:left;
+	}
+	
+	.
+

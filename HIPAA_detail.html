@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--<!DOCTYPE html>-->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<title>HIPAA Release Form Detail</title>
+
+<link rel="stylesheet" href="metric_detail.css" />
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+
+google.load('visualization', '1', {packages: ['gauge']});
+google.setOnLoadCallback(queryValue1);
+//Label query
+function queryValue1 () {
+    var query = new google.visualization.Query('https://spreadsheets.google.com/spreadsheet/tq?range=A22:A24&key=0AhCv9Xu_eRnSdHBrU3h2cFJ0Q1lNTWc5LUxVREEzQ0E&gid=10');
+    query.send(function (response) {
+        if (response.isError()) {
+            alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+            return;
+        }
+        var data1 = response.getDataTable();
+        var a1 = data1.getValue(0, 0);
+        var a2 = data1.getValue(1, 0);
+        var a3 = data1.getValue(2, 0);
+		
+		queryValue3(a1,a2,a3);
+    });
+}
+function queryValue3(met1,met2,met3) {
+    var query3 = new google.visualization.Query('https://spreadsheets.google.com/spreadsheet/tq?range=B22:B24&key=0AhCv9Xu_eRnSdHBrU3h2cFJ0Q1lNTWc5LUxVREEzQ0E&gid=10');
+    query3.send(function (response) {
+        if (response.isError()) {
+            alert('Error in query3: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+            return;
+        }
+
+		var data3 = response.getDataTable();
+		
+		var m1 = data3.getValue(0, 0);
+        var m2 = data3.getValue(1, 0);
+        var m3 = data3.getValue(2, 0);
+
+	
+	var red22 = "<span style='color:#ff0000'> ";
+    var yellow22 = "<span style='color:#FF9900'> ";
+    var green22 = "<span style='color:#009900'> ";
+	
+	//Monthly
+	// Gauge Ranges  options: { min: 1.5, max: 0, redFrom: 1.5, redTo: 1, yellowFrom: 1, yellowTo: .5, greenFrom: .5, greenTo: 0,
+	if (m1 <= 95)
+    {
+    m1 = red22;
+    }
+    else if (m1 <= 99)
+    {
+    m1 = yellow22;
+    }
+    else if(m1 >=99.1)
+    {
+    m1 = green22;
+    }
+	
+	//3 Month
+	//Gauge Ranges  options: { min: 92, max: 100, redFrom: 92, redTo: 95, yellowFrom: 95, yellowTo: 99.1, greenFrom: 99.1, greenTo: 100,
+	if (m2 <= 95)
+    {
+    m2 = red22;
+    }
+    else if (m2 <= 99)
+    {
+    m2 = yellow22;
+    }
+    else if(m2 >=99.1)
+    {
+    m2 = green22;
+    }
+	
+	//YTD
+	//Gauge Ranges  options: { min: 97, max: 100, redFrom: 97, redTo: 98, yellowFrom: 98, yellowTo: 99.1, greenFrom: 99.1, greenTo: 100,
+	if (m3 <= 95)
+    {
+    m3 = red22;
+    }
+    else if (m3 <= 99)
+    {
+    m3 = yellow22;
+    }
+    else if(m3 >=99.1)
+    {
+    m3 = green22;
+    }
+
+	var m1 = (m1 + met1 + "</span>");
+	var m2 = (m2 + met2 + "</span>");
+	var m3 = (m3 + met3 + "</span>");
+		
+    document.getElementById('m1').innerHTML = m1;
+	document.getElementById('m2').innerHTML = m2;
+	document.getElementById('m3').innerHTML = m3;
+	
+	drawVisualization()
+	});
+    }
+	//Title Query for "How can I help?"
+	function queryValue4() {
+    var query4 = new google.visualization.Query('https://spreadsheets.google.com/spreadsheet/tq?range=A21&key=0AhCv9Xu_eRnSdHBrU3h2cFJ0Q1lNTWc5LUxVREEzQ0E&gid=11');
+    query4.send(function (response) {
+        if (response.isError()) {
+            alert('Error in query3: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+            return;
+        }
+		var data4 = response.getDataTable();
+		//var t1 = data4.getValue(0, 0);
+		//document.getElementById.innerHTML = t1;
+		document.getElementById('t1').innerHTML = data4.getValue(0, 0);
+		});
+		}
+//google.setOnLoadCallback(drawVisualization);
+//The following metrics are in a sheet named Quality BSC Reporting 2013 (15)
+function drawVisualization() {
+		//Advance Directives Last Month Gauge
+    var wrapper1 = new google.visualization.ChartWrapper({
+        chartType: 'Gauge',
+        dataSourceUrl: 'https://spreadsheets.google.com/spreadsheet/tq?range=B22&key=0AhCv9Xu_eRnSdHBrU3h2cFJ0Q1lNTWc5LUxVREEzQ0E&gid=10',
+        containerId: 'visualization1',
+        options: { min: 90, max: 100, redFrom: 90, redTo: 95, yellowFrom: 95, yellowTo: 99.1, greenFrom: 99.1, greenTo: 100,
+        }
+    });
+		//Advance Directives 3 Month Rolling Gauge
+    var wrapper2 = new google.visualization.ChartWrapper({
+        chartType: 'Gauge',
+        dataSourceUrl: 'https://spreadsheets.google.com/spreadsheet/tq?range=B23&key=0AhCv9Xu_eRnSdHBrU3h2cFJ0Q1lNTWc5LUxVREEzQ0E&gid=10',
+        containerId: 'visualization2',
+        options: { min: 90, max: 100, redFrom: 90, redTo: 95, yellowFrom: 95, yellowTo: 99.1, greenFrom: 99.1, greenTo: 100,
+        }
+    });
+		//Advance Directives Calendar YTD Gauge
+    var wrapper3 = new google.visualization.ChartWrapper({
+        chartType: 'Gauge',
+        dataSourceUrl: 'https://spreadsheets.google.com/spreadsheet/tq?range=B24&key=0AhCv9Xu_eRnSdHBrU3h2cFJ0Q1lNTWc5LUxVREEzQ0E&gid=10',
+        containerId: 'visualization3',
+        options: { min: 90, max: 100, redFrom: 90, redTo: 95, yellowFrom: 95, yellowTo: 99.1, greenFrom: 99.1, greenTo: 100,
+        }
+    });
+    var wrapper4 = new google.visualization.ChartWrapper({
+		"containerId": "trending_div",
+		"dataSourceUrl": "https://spreadsheets.google.com/a/google.com/tq?range=M1:O14&key=0AhCv9Xu_eRnSdHBrU3h2cFJ0Q1lNTWc5LUxVREEzQ0E&gid=1",
+		"refreshInterval": 5,
+		"chartType": "ComboChart",
+		"options": {
+		"pointSize": 5,
+		"height": 350,
+		"width": 900,
+		"titlePosition": "out",
+		"title": "HIPAA Release Form Trend",
+		"titleTextStyle": {color: "black", fontName: "Arial", fontSize: "20"},
+		"vAxis":{
+            minValue: 80,
+            maxValue: 100},
+       }
+     });
+	var wrapper5 = new google.visualization.ChartWrapper({
+	"containerId": "help_div",
+	"dataSourceUrl": "https://spreadsheets.google.com/a/google.com/tq?range=A22:A24&key=0AhCv9Xu_eRnSdHBrU3h2cFJ0Q1lNTWc5LUxVREEzQ0E&gid=11",
+	chartType: "Table",
+	options: {
+		height: 100,
+		width: 600,
+		sort: "disable",
+		allowHtml: "true",
+		title: "How can I help?",
+		titlePosition: "out",
+		alternatingRowStyle: false,
+		showRowNumber: false,
+		cssClassNames: {
+			tableRows: 'googlerows'
+		}
+		}
+	});
+    var wrapper6 = new google.visualization.ChartWrapper({
+    "containerId": "table_div",
+    "dataSourceUrl": "https://spreadsheets.google.com/a/google.com/tq?range=M1:O14&key=0AhCv9Xu_eRnSdHBrU3h2cFJ0Q1lNTWc5LUxVREEzQ0E&gid=1",
+    "refreshInterval": 5,
+    "chartType": "Table",
+    "options": {
+	"height": 300,
+	"width": 600,
+	"title": "HIPAA Release Form",
+	"titlePosition": "out",
+    "alternatingRowStyle": true,
+    "showRowNumber" : false
+       }
+     });
+		wrapper1.draw();
+		wrapper2.draw();
+		wrapper3.draw();
+		wrapper4.draw();
+		wrapper5.draw();
+		wrapper6.draw();
+		queryValue4()
+}
+</script>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+<div id="bodydiv">
+<div  class="maintitle"><span>HIPAA Release Detail</span><br />
+	</span><FORM><INPUT Type="button" VALUE="Back to the Dashboard" onClick="history.go(-1);return true;"></FORM></span>
+	</div></div>
+<table class="gaugetable">
+    <tbody>
+		<tr valign="top">
+		<td><center><div><b><span id="m1"></b></div></center></td>
+		<td><center><div><b><span id="m2"></b></div></center></td>
+		<td><center><div><b><span id="m3"></b></div></center></td>
+		</tr>
+		<tr valign="top">
+			<td><center><div id="visualization1" style="width: 125px; height: 122px;"></div></center></td>
+			<td><center><div id="visualization2" style="width: 125px; height: 122px;"></div></center></td>
+			<td><center><div id="visualization3" style="width: 125px; height: 122px;"></div></center></td>
+		</tr>
+		<tr valign="top">
+			<td colspan ="3"><center><div><b><span id="trending_div"></b></div></center></td>
+		</tr>
+	</tbody>
+    </table>
+	<table align="center">
+		<tr><td class="headerrow"><span id="t1"></span></td></tr>
+		<tr valign="top">
+		<td><div id="help_div" style="width: 600px; height: 100px;"></div></td>
+		</tr>
+		</table>
+		<table align="center">
+		<tr valign="top">
+		<td class="googlerows"><center><div id="table_div" style="width: 400px; height: 300px;"></center></div></td>
+		</tr>
+		</table>
+</div>
+</body>
+
+</html>
